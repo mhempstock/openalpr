@@ -1,0 +1,1 @@
+Openalpr base image with Cuda support
