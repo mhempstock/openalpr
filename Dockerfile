@@ -51,6 +51,6 @@ RUN cd openalpr/src/build && cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INST
 RUN cd openalpr/src/build && make
 RUN cd openalpr/src/build && make install
 
-COPY  openalpr/openalpr.conf openalpr.conf
+COPY  openalpr.conf openalpr.conf
 
 entrypoint ["alpr"]
