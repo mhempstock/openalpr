@@ -44,8 +44,7 @@ RUN  apt-get install -y libtool automake
 RUN curl -L https://github.com/DanBloomberg/leptonica/releases/download/1.79.0/leptonica-1.79.0.tar.gz -o leptonica-1.79.0.tar.gz && \
 tar -xf leptonica-1.79.0.tar.gz
 RUN cd leptonica-1.79.0 && ./autogen.sh 
-RUN cd leptonica-1.79.0 && LIBLEPT_HEADERSDIR=$HOME/local/include ./configure \
-               --prefix=$HOME/local/ --with-extra-libraries=$HOME/local/lib
+RUN cd leptonica-1.79.0 && ./configure --prefix=$HOME/local/ --enable-shared
 RUN cd leptonica-1.79.0 && make
 RUN cd leptonica-1.79.0 && make install 
 RUN rm -Rf /leptonica-1.79.0
@@ -56,7 +55,7 @@ RUN rm -Rf /leptonica-1.79.0
 RUN curl -L https://github.com/tesseract-ocr/tesseract/archive/4.1.1.tar.gz -o tesseract.tar.gz && \
 tar -xf tesseract.tar.gz
 RUN cd tesseract-4.1.1 && ./autogen.sh 
-RUN cd tesseract-4.1.1 && ./configure --prefix=$HOME/local/ --enable-shared
+RUN cd tesseract-4.1.1 && ./configure --prefix=$HOME/local/ --enable-shared --with-extra-libraries=$HOME/local/lib
 RUN cd tesseract-4.1.1 && make
 RUN cd tesseract-4.1.1 && make install 
 RUN rm -Rf /tesseract-4.1.1
