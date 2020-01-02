@@ -63,7 +63,7 @@ RUN apt-get install g++-8 gcc-8  -y && update-alternatives --install /usr/bin/g+
 
 
 RUN git clone https://github.com/log4cplus/log4cplus.git && cd log4cplus && \
-./configure CXXFLAGS="-std=c++0x" && make && make install && rm -Rf /log4cplus
+./configure  && make && make install && rm -Rf /log4cplus
 
 
 RUN git clone https://github.com/openalpr/openalpr.git
