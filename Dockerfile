@@ -36,21 +36,13 @@ make -j "$(nproc)" && make install && rm -Rf /opencv /opencv_contrib
 # RUN curl -L https://cppan.org/client/cppan-master-Linux-client.deb -o cppan-master-Linux-client.deb && \
 # dpkg -i cppan-master-Linux-client.deb
 
-RUN  apt-get install -y libtool automake
-
-# RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
-#  mkdir build && cd build && cmake .. && make && make install && rm -Rf /leptonica
+RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
+ mkdir build && cd build && cmake .. && make && make install && rm -Rf /leptonica
 
 RUN curl -L https://github.com/DanBloomberg/leptonica/releases/download/1.79.0/leptonica-1.79.0.tar.gz -o leptonica-1.79.0.tar.gz && \
 tar -xf leptonica-1.79.0.tar.gz
-RUN cd leptonica-1.79.0 && ./autogen.sh 
-RUN cd leptonica-1.79.0 && ./configure --prefix=$HOME/local/ --enable-shared
-RUN cd leptonica-1.79.0 && make
-RUN cd leptonica-1.79.0 && make install 
-RUN rm -Rf /leptonica-1.79.0
 
-
-
+RUN  apt-get install -y libtool automake
 
 RUN curl -L https://github.com/tesseract-ocr/tesseract/archive/4.1.1.tar.gz -o tesseract.tar.gz && \
 tar -xf tesseract.tar.gz
