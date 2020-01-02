@@ -44,7 +44,8 @@ RUN  apt-get install -y libtool automake
 RUN curl -L https://github.com/DanBloomberg/leptonica/releases/download/1.79.0/leptonica-1.79.0.tar.gz -o leptonica-1.79.0.tar.gz && \
 tar -xf leptonica-1.79.0.tar.gz
 RUN cd leptonica-1.79.0 && ./autogen.sh 
-RUN cd leptonica-1.79.0 && ./configure --prefix=$HOME/local/ --enable-shared
+RUN cd leptonica-1.79.0 && LIBLEPT_HEADERSDIR=$HOME/local/include ./configure \
+               --prefix=$HOME/local/ --with-extra-libraries=$HOME/local/lib
 RUN cd leptonica-1.79.0 && make
 RUN cd leptonica-1.79.0 && make install 
 RUN rm -Rf /leptonica-1.79.0
