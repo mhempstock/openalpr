@@ -44,7 +44,7 @@ RUN  apt-get install -y libtool automake
 RUN curl -L https://github.com/tesseract-ocr/tesseract/archive/4.1.1.tar.gz -o tesseract.tar.gz && \
 tar -xf tesseract.tar.gz
 RUN cd tesseract-4.1.1 && ./autogen.sh 
-RUN cd tesseract-4.1.1 && ./configure --prefix=$HOME/local/ 
+RUN cd tesseract-4.1.1 && ./configure --prefix=$HOME/local/ --enable-shared
 RUN cd tesseract-4.1.1 && make
 RUN cd tesseract-4.1.1 && make install 
 RUN rm -Rf /tesseract-4.1.1
