@@ -39,7 +39,7 @@ make -j "$(nproc)" && make install && rm -Rf /opencv /opencv_contrib
 RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
  mkdir build && cd build && cmake .. && make && make install && rm -Rf /leptonica
 
-RUN  apt-get install -y libtool
+RUN  apt-get install -y libtool autotools-dev
 
 RUN git clone https://github.com/tesseract-ocr/tesseract.git && cd tesseract && \
 ./autogen.sh && ./configure && make && make install && rm -Rf /tesseract
