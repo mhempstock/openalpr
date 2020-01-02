@@ -37,7 +37,7 @@ make -j "$(nproc)" && make install && rm -Rf /opencv /opencv_contrib
 # dpkg -i cppan-master-Linux-client.deb
 
 RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
-./autogen.sh && mkdir build && cd build && cmake .. && make && make install && rm /leptonica
+ mkdir build && cd build && cmake .. && make && make install && rm /leptonica
 
 
 RUN git clone https://github.com/openalpr/openalpr.git && mkdir openalpr/src/build && cd openalpr/src/build && \
