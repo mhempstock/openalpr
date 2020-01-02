@@ -58,9 +58,12 @@ RUN cd tesseract-4.1.1 && LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/includ
 RUN cd tesseract-4.1.1 && make install 
 RUN rm -Rf /tesseract-4.1.1
 
+RUN git https://github.com/log4cplus/log4cplus.git && cd log4cplus && \
+&& make && make install && rm -Rf /log4cplus
+
 
 RUN git clone https://github.com/openalpr/openalpr.git
-# COPY CMakeLists.txt.mod openalpr/src/CMakeLists.txt
+COPY CMakeLists.txt.mod openalpr/src/CMakeLists.txt
 RUN mkdir openalpr/src/build && cd openalpr/src/build && \
 cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc –DCOMPILE_GPU=6 -D WITH_GPU_DETECTOR=ON .. && \
 make && make install && cd / && rm -Rf openalpr
