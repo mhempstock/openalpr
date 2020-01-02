@@ -37,7 +37,11 @@ make -j "$(nproc)" && make install && rm -Rf /opencv /opencv_contrib
 # dpkg -i cppan-master-Linux-client.deb
 
 RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
- mkdir build && cd build && cmake .. && make && make install && rm /leptonica
+ mkdir build && cd build && cmake .. && make && make install && rm -Rf /leptonica
+
+RUN git clone https://github.com/tesseract-ocr/tesseract.git && cd tesseract && \
+./autogen.sh && ./configure && make && make install && rm -Rf /tesseract
+
 
 
 RUN git clone https://github.com/openalpr/openalpr.git && mkdir openalpr/src/build && cd openalpr/src/build && \
