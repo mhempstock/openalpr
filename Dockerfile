@@ -41,8 +41,12 @@ RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
 
 RUN  apt-get install -y libtool automake
 
-RUN git clone https://github.com/tesseract-ocr/tesseract.git && cd tesseract && \
-./autogen.sh && ./configure --prefix=$HOME/local/ && make && make install && rm -Rf /tesseract
+RUN git clone https://github.com/tesseract-ocr/tesseract.git 
+RUN cd tesseract && ./autogen.sh 
+RUN cd tesseract && ./configure --prefix=$HOME/local/ 
+RUN cd tesseract && make 
+RUN cd tesseract && make install 
+RUN rm -Rf /tesseract
 
 
 RUN git clone https://github.com/openalpr/openalpr.git && mkdir openalpr/src/build && cd openalpr/src/build && \
