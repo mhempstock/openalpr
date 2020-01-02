@@ -33,8 +33,8 @@ cd opencv_contrib && git checkout 3.4.0 && cd ../opencv/build && \
 cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_NVCUVID=ON -D FORCE_VTK=ON -D WITH_XINE=ON -D WITH_CUDA=ON -D WITH_OPENGL=ON -D WITH_TBB=ON -D WITH_OPENCL=ON -D CMAKE_BUILD_TYPE=RELEASE -D CUDA_NVCC_FLAGS="-D_FORCE_INLINES --expt-relaxed-constexpr" -D WITH_GDAL=ON -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules/ -D ENABLE_FAST_MATH=1 -D CUDA_FAST_MATH=1 -D WITH_CUBLAS=1 -D CXXFLAGS="-std=c++11" -DCMAKE_CXX_COMPILER=g++-6 -DCMAKE_C_COMPILER=gcc-6 .. && \
 make -j "$(nproc)" && make install && rm -Rf /opencv /opencv_contrib
 
-COPY https://cppan.org/client/cppan-master-Linux-client.deb cppan-master-Linux-client.deb
-RUN apt install -y cppan-master-Linux-client.deb
+RUN curl https://cppan.org/client/cppan-master-Linux-client.deb -o cppan-master-Linux-client.deb && \
+dpkg -i -y cppan-master-Linux-client.deb
 
 RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
 cppan && mkdir build && cd build && cmake .. && make && make install && rm /leptonica
