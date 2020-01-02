@@ -58,7 +58,8 @@ RUN cd tesseract-4.1.1 && LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/includ
 RUN cd tesseract-4.1.1 && make install 
 RUN rm -Rf /tesseract-4.1.1
 
-RUN apt-get install -y liblog4cplus-dev
+RUN git clone https://github.com/log4cplus/log4cplus.git && cd log4cplus && \
+./configure CXXFLAGS="-std=c++0x" && make && make install && rm -Rf /log4cplus
 
 
 RUN git clone https://github.com/openalpr/openalpr.git
