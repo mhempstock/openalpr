@@ -39,16 +39,14 @@ make -j "$(nproc)" && make install && rm -Rf /opencv /opencv_contrib
 RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
  mkdir build && cd build && cmake .. && make && make install && rm -Rf /leptonica
 
-RUN curl -L https://github.com/DanBloomberg/leptonica/releases/download/1.79.0/leptonica-1.79.0.tar.gz -o leptonica-1.79.0.tar.gz && \
-tar -xf leptonica-1.79.0.tar.gz
 
 RUN  apt-get install -y libtool automake
 
 RUN curl -L https://github.com/tesseract-ocr/tesseract/archive/4.1.1.tar.gz -o tesseract.tar.gz && \
 tar -xf tesseract.tar.gz
 RUN cd tesseract-4.1.1 && ./autogen.sh 
-RUN cd tesseract-4.1.1 && ./configure --prefix=$HOME/local/ --enable-shared --with-extra-libraries=$HOME/local/lib
-RUN cd tesseract-4.1.1 && make
+RUN cd tesseract-4.1.1 && ./configure
+RUN cd tesseract-4.1.1 && LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/include" make
 RUN cd tesseract-4.1.1 && make install 
 RUN rm -Rf /tesseract-4.1.1
 
