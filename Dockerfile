@@ -34,7 +34,7 @@ cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_NVCUVID=ON -D FORCE_VTK=ON -D W
 make -j "$(nproc)" && make install && rm -Rf /opencv /opencv_contrib
 
 RUN curl https://cppan.org/client/cppan-master-Linux-client.deb -o cppan-master-Linux-client.deb && \
-dpkg -i -y cppan-master-Linux-client.deb
+dpkg -i cppan-master-Linux-client.deb
 
 RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
 cppan && mkdir build && cd build && cmake .. && make && make install && rm /leptonica
