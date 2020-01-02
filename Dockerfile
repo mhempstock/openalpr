@@ -61,7 +61,7 @@ RUN rm -Rf /tesseract-4.1.1
 RUN apt-get install g++-8 gcc-8   -y 
 
 
-RUN curl https://github.com/log4cplus/log4cplus/releases/download/REL_2_0_5/log4cplus-2.0.5.tar.gz -o log4cplus-2.0.5.tar && \
+RUN curl -L https://github.com/log4cplus/log4cplus/releases/download/REL_2_0_5/log4cplus-2.0.5.tar.gz -o log4cplus-2.0.5.tar && \
 tar -xf log4cplus-2.0.5.tar.gz && cd log4cplus-2.0.5 && \
 export CXX=g++-8 CC=gcc-8 && ./configure  && make && make install && rm -Rf /log4cplus
 
