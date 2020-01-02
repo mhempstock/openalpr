@@ -50,13 +50,13 @@ RUN cd leptonica-1.79.0 && make
 RUN cd leptonica-1.79.0 && make install 
 RUN rm -Rf /leptonica-1.79.0
 
-RUN curl -L https://github.com/tesseract-ocr/tesseract/archive/3.05.02.tar.gz -o tesseract.tar.gz && \
+RUN curl -L https://github.com/tesseract-ocr/tesseract/archive/4.1.1.tar.gz -o tesseract.tar.gz && \
 tar -xf tesseract.tar.gz
-RUN cd tesseract-3.05.02 && ./autogen.sh 
-RUN cd tesseract-3.05.02 && ./configure
-RUN cd tesseract-3.05.02 && LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/include" make
-RUN cd tesseract-3.05.02 && make install 
-RUN rm -Rf /tesseract-3.05.02
+RUN cd tesseract-4.1.1 && ./autogen.sh 
+RUN cd tesseract-4.1.1 && ./configure
+RUN cd tesseract-4.1.1 && LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/include" make
+RUN cd tesseract-4.1.1 && make install 
+RUN rm -Rf /tesseract-4.1.1
 
 RUN apt-get install g++-8 gcc-8   -y 
 
