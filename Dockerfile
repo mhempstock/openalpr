@@ -58,11 +58,11 @@ RUN cd tesseract-4.1.1 && LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/includ
 RUN cd tesseract-4.1.1 && make install 
 RUN rm -Rf /tesseract-4.1.1
 
-RUN apt-get install g++-8 gcc-8  -y 
+RUN apt-get install g++-8 gcc-8 automake  -y 
 
 
 RUN git clone https://github.com/log4cplus/log4cplus.git && cd log4cplus && \
-export CXX=g++-8 CC=gcc-8 && ./configure  && make && make install && rm -Rf /log4cplus
+export CXX=g++-8 CC=gcc-8 && autoreconf -f -i &&./configure  && make && make install && rm -Rf /log4cplus
 
 
 RUN git clone https://github.com/openalpr/openalpr.git
