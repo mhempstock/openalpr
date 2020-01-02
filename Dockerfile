@@ -59,7 +59,9 @@ RUN cd tesseract-4.1.1 && make install
 RUN rm -Rf /tesseract-4.1.1
 
 
-RUN git clone https://github.com/openalpr/openalpr.git && awk 'NR==1{print; "print set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")"} NR!=1' &&  mkdir openalpr/src/build && cd openalpr/src/build && \
+RUN git clone https://github.com/openalpr/openalpr.git
+COPY CMakeLists.txt.mod openalpr/src/CMakeLists.txt
+RUN mkdir openalpr/src/build && cd openalpr/src/build && \
 cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc –DCOMPILE_GPU=6 -D WITH_GPU_DETECTOR=ON .. && \
 make && make install && cd / && rm -Rf openalpr
 
