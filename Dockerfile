@@ -60,7 +60,7 @@ RUN rm -Rf /tesseract-4.1.1
 
 RUN apt-get install g++-8 gcc-8  -y 
 RUN rm /usr/bin/gcc && ln -s /usr/bin/gcc-8 /usr/bin/gcc
-RUN rm /usr/bin/g++ &&n -s /usr/bin/g++-8 /usr/bin/g++
+RUN rm /usr/bin/g++ && ln -s /usr/bin/g++-8 /usr/bin/g++
 
 
 RUN git clone https://github.com/log4cplus/log4cplus.git && cd log4cplus && \
