@@ -60,6 +60,7 @@ RUN rm -Rf /tesseract-4.1.1
 
 RUN apt-get install g++-7 gcc-7 g++-7 -y && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 60 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60
 
+RUN g++ --version
 
 RUN git clone https://github.com/log4cplus/log4cplus.git && cd log4cplus && \
 ./configure CXXFLAGS="-std=c++0x" && make && make install && rm -Rf /log4cplus
