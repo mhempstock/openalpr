@@ -41,10 +41,11 @@ RUN git clone https://github.com/DanBloomberg/leptonica.git && cd leptonica && \
 
 RUN  apt-get install -y libtool automake
 
-RUN git clone https://github.com/tesseract-ocr/tesseract.git 
+RUN -L curl https://github.com/tesseract-ocr/tesseract/archive/4.1.1.tar.gz -o tesseract.tar.gz && \
+tar -xf tesseract.tar.gz
 RUN cd tesseract && ./autogen.sh 
 RUN cd tesseract && ./configure --prefix=$HOME/local/ 
-RUN cd tesseract && make 
+RUN cd tesseract && make
 RUN cd tesseract && make install 
 RUN rm -Rf /tesseract
 
